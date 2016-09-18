@@ -2,14 +2,16 @@ from tkinter import *
 import sys
 global file
 class Application(Frame):
+    """ An application to create a reminders html document """
     def __init__(self,master):
+        """ Initializes the frame"""
         Frame.__init__(self,master)
         self.grid()
         self.points = []
         self.file = open("reminders.html","r+")
         self.createscreen()
         
-    def createscreen(self):
+    def createscreen(self): #creates all the widgets onscreen
         Label(text = 'thanks for using :D').grid(row=1, column = 0, columnspan = 2)
         self.c = 2
         self.file.seek(0)
@@ -46,7 +48,7 @@ class Application(Frame):
             fg = "red",
             command = self.removeline)
         self.removeline.grid(row = self.c+1, column = 1)
-    def addline(self):
+    def addline(self): # adds one line at the bottom
         self.reminder = Entry(width = 100)
         self.reminder.grid(row = self.c, columnspan = 2)
         self.points.append(self.reminder)
@@ -55,7 +57,7 @@ class Application(Frame):
         self.exitbutton.grid(row = self.c + 2)
         self.addline.grid(row = self.c + 1)
         self.removeline.grid(row = self.c + 1)
-    def removeline(self):
+    def removeline(self): # removes one line from the bottom
         temp = self.points.pop()
         temp.destroy()
         self.c -= 1
@@ -63,13 +65,13 @@ class Application(Frame):
         self.exitbutton.grid(row = self.c + 2)
         self.addline.grid(row = self.c + 1)
         self.removeline.grid(row = self.c + 1)
-    def save(self): # The functuion that saves reminders
+    def save(self): # The function that saves reminders
         reminderstext = ""
         for i in self.points:
             temp = "<li>" + i.get() + "</li>\n"
             reminderstext += temp
+        # tempconcat is the concatinated entire file to save
         tempconcat = """<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n""" + reminderstext + """\n</ul>\n</div>\n</body>\n</html>"""
-        print(tempconcat)
         self.file.seek(0)
         self.file.write(tempconcat)
         try:
@@ -78,7 +80,7 @@ class Application(Frame):
             print("saved")
     def tkexit(self):
         exit()
-def createfile():
+def createfile(): #creates a new html document
     try:
         if messagebox.askyesno("Create","Failed to open file.\nWould you like to create a new one?"):
             file = open("reminders.html","w")

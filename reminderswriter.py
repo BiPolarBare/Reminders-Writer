@@ -69,7 +69,7 @@ class Application(Frame):
             temp = "<li>" + i.get() + "</li>\n"
             reminderstext += temp
         # tempconcat is the concatinated entire file to save
-        tempconcat = """<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n""" + reminderstext + """\n</ul>\n</div>\n</body>\n</html>"""
+        tempconcat = normalhtml[0] + reminderstext + normalhtml[1]
         self.file.seek(0)
         self.file.write(tempconcat)
         try:
@@ -82,14 +82,14 @@ def createfile(): #creates a new html document
     try:
         if messagebox.askyesno("Create","Failed to open file.\nWould you like to create a new one?"):
             file = open("reminders.html","w")
-            file.write("""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n\n</ul>\n</div>\n</body>\n</html>""")
+            file.write(normalhtml[0] + normalhtml[1])
         else:
             exit()
     except:
         print("failed to use msg box\nusing legacy.")
         if legacyyesno("Failed to open file.\nWould you like to create a new one?"):
             file = open("reminders.html","w")
-            file.write("""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n\n</ul>\n</div>\n</body>\n</html>""")
+            file.write(normalhtml[0] + normalhtml[1])
         else:
             exit()
 def legacyyesno(question): # Problems with messagebox redirect here
@@ -108,7 +108,8 @@ try:
     file = open("reminders.html","r+")
 except:
     createfile()
-
+normalhtml["""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:40%;top:40%'>\n<h1>Reminders</h1>\n<ul>\n """,
+    """\n</ul>\n</div>\n</body>\n</html>"""] # this contains the entire html file
 root = Tk();
 app = Application(root)
 root.title('html reminders editor')

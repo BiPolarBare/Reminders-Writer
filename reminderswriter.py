@@ -68,7 +68,7 @@ class Application(Frame):
         for i in self.points:
             temp = "<li>" + i.get() + "</li>\n"
             reminderstext += temp
-        tempconcat = """<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://lh5.googleusercontent.com/dJ5UIwKQQWfW4zpqEZOD_Htu1bI4nXELxNtCRrvpzCtAp-LREgSb2WlPkpCWxNt8Sx9hnsh6E1OGDvA=w1920-h971');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n""" + reminderstext + """\n</ul>\n</div>\n</body>\n</html>"""
+        tempconcat = """<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n""" + reminderstext + """\n</ul>\n</div>\n</body>\n</html>"""
         print(tempconcat)
         self.file.seek(0)
         self.file.write(tempconcat)
@@ -82,14 +82,14 @@ def createfile():
     try:
         if messagebox.askyesno("Create","Failed to open file.\nWould you like to create a new one?"):
             file = open("reminders.html","w")
-            file.write("""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://lh5.googleusercontent.com/dJ5UIwKQQWfW4zpqEZOD_Htu1bI4nXELxNtCRrvpzCtAp-LREgSb2WlPkpCWxNt8Sx9hnsh6E1OGDvA=w1920-h971');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n\n</ul>\n</div>\n</body>\n</html>""")
+            file.write("""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n\n</ul>\n</div>\n</body>\n</html>""")
         else:
             exit()
     except:
         print("failed to use msg box\nusing legacy.")
         if legacyyesno("Failed to open file.\nWould you like to create a new one?"):
             file = open("reminders.html","w")
-            file.write("""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://lh5.googleusercontent.com/dJ5UIwKQQWfW4zpqEZOD_Htu1bI4nXELxNtCRrvpzCtAp-LREgSb2WlPkpCWxNt8Sx9hnsh6E1OGDvA=w1920-h971');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n\n</ul>\n</div>\n</body>\n</html>""")
+            file.write("""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:600px;'>\n<h1>Reminders</h1>\n<ul>\n\n</ul>\n</div>\n</body>\n</html>""")
         else:
             exit()
 def legacyyesno(question): # Problems with messagebox redirect here

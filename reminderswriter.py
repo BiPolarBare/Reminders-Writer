@@ -1,6 +1,4 @@
 from tkinter import *
-import sys
-global file
 class Application(Frame):
     """ An application to create a reminders html document """
     def __init__(self,master):

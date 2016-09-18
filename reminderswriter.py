@@ -1,4 +1,6 @@
 from tkinter import *
+normalhtml["""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:40%;top:40%'>\n<h1>Reminders</h1>\n<ul>\n """,
+    """\n</ul>\n</div>\n</body>\n</html>"""] # this contains the entire html file
 class Application(Frame):
     """ An application to create a reminders html document """
     def __init__(self,master):
@@ -108,8 +110,7 @@ try:
     file = open("reminders.html","r+")
 except:
     createfile()
-normalhtml["""<!Doctype HTML>\n<html>\n<head>\n<title>Reminders</title>\n</head>\n<body style="background-image:url('https://raw.githubusercontent.com/BiPolarBare/Reminders-Writer/master/background.png');background-size: cover;background-repeat:no-repeat;">\n<div style='position:absolute;left:40%;top:40%'>\n<h1>Reminders</h1>\n<ul>\n """,
-    """\n</ul>\n</div>\n</body>\n</html>"""] # this contains the entire html file
+
 root = Tk();
 app = Application(root)
 root.title('html reminders editor')
